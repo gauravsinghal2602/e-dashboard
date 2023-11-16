@@ -20,7 +20,10 @@ const ProductList = ()=>{
     const deleteProduct =async (id) => {
         // console.warn(id);
         let result = await fetch(`http://localhost:5000/product/${id}`,{
-            method:"DELETE"
+            method:"DELETE",
+            headers: {
+                authorization : `bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
         });
         result =await result.json();
         if(result)
